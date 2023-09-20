@@ -1,7 +1,10 @@
 name = "MatrixCorrectionTools"
 uuid = "41f81499-25de-46de-b591-c3cfc21e9eaf"
 authors = ["Bagaev Dmitry <d.v.bagaev@tue.nl>"]
-version = "1.0.0-DEV"
+version = "1.0.0"
+
+[deps]
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 
 [compat]
 julia = "1"
