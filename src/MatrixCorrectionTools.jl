@@ -3,6 +3,11 @@ module MatrixCorrectionTools
 using LinearAlgebra
 
 """
+Abstract type to dispatch on a correction strategy defined in the package.
+"""
+abstract type AbstractCorrectionStrategy end
+
+"""
     correction!(strategy, input)
 
 Modifies the `input` in-place using a specified correction strategy.
@@ -23,7 +28,7 @@ correction(strategy, input) = correction!(strategy, deepcopy(input))
 
 A correction strategy option for the `correction!` function. It does not modify the input and simply returns the original.
 """
-struct NoCorrection end
+struct NoCorrection <: AbstractCorrectionStrategy end
 
 correction!(::NoCorrection, input) = input
 
@@ -36,7 +41,7 @@ The `LinearAlgebra.diagint` function is employed to iterate over the diagonal en
 The `iszero` function is utilized to determine whether a diagonal entry is zero or not.
 This strategy converts the type of `value` to the exact element type of the container.
 """
-struct ReplaceZeroDiagonalEntries{T} 
+struct ReplaceZeroDiagonalEntries{T} <: AbstractCorrectionStrategy
     value :: T
 end
 
@@ -59,7 +64,7 @@ A correction strategy option for the `correction!` function. It adds the predefi
 The `LinearAlgebra.diagint` function is employed to iterate over the diagonal entries.
 This strategy converts the type of `value` to the exact element type of the container.
 """
-struct AddToDiagonalEntries{T} 
+struct AddToDiagonalEntries{T} <: AbstractCorrectionStrategy
     value :: T
 end
 
@@ -78,7 +83,7 @@ end
 A correction strategy option for the `correction!` function. It clamps the diagonal entries between `lo` and `ho`.
 The `LinearAlgebra.diagint` function is employed to iterate over the diagonal entries.
 """
-struct ClampDiagonalEntries{L, H} 
+struct ClampDiagonalEntries{L, H} <: AbstractCorrectionStrategy
     lo::L
     hi::H
 end
@@ -100,7 +105,7 @@ The `LinearAlgebra.diagint` function is employed to iterate over the diagonal en
 The `LinearAlgebra.svd` function is employed to make the SVD decomposition.
 
 """
-struct ClampSingularValues{L, H}
+struct ClampSingularValues{L, H} <: AbstractCorrectionStrategy
     lo::L
     hi::H
 end

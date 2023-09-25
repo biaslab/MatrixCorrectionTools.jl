@@ -15,11 +15,14 @@ them using either fixed predefined values or a more advanced algorithm based on 
 ```@docs 
 MatrixCorrectionTools.correction!
 MatrixCorrectionTools.correction
+MatrixCorrectionTools.AbstractCorrectionStrategy
 ```
 
 ## Available strategies
 
 A strategy must implement a single function: [`MatrixCorrectionTools.correction!`](@ref).
+Note that all defined strategies in the package are subtypes of the [`MatrixCorrectionTools.AbstractCorrectionStrategy`], but it is not 
+necessary to subtype from it for the `correction!` function to work.
 
 ```@docs
 MatrixCorrectionTools.NoCorrection
