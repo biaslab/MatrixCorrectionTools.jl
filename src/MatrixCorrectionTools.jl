@@ -13,8 +13,11 @@ abstract type AbstractCorrectionStrategy end
 Modifies the `input` in-place using a specified correction strategy.
 The `input` can be either a matrix or a number. 
 Certain strategies may require the input to satisfy specific properties beforehand, e.g., the input must be a square matrix.
+The `nothing` is a special correction strategy that does nothing and simply returns its input.
 """
 function correction! end
+
+correction!(::Nothing, input) = input
 
 """
     correction(strategy, input)

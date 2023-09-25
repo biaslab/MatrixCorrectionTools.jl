@@ -28,6 +28,18 @@ MatrixCorrectionTools.correction!(::CustomStrategyAddsOneWithAbstractType, input
 
     end
 
+    @testset "`nothing` strategy" begin
+
+        @test correction!(nothing, 0) === 0
+
+        for n in (3, 4, 5)
+            local A = rand(n, n)
+            @test correction!(nothing, A) == deepcopy(A)
+            @test correction!(nothing, A) === A
+        end
+
+    end
+
     @testset "`NoCorrection` strategy" begin
         import MatrixCorrectionTools: NoCorrection
 
