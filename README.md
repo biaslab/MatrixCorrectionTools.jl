@@ -13,3 +13,8 @@ For instance, if a matrix contains zero diagonal entries, this package provides 
 them using either fixed predefined values or a more advanced algorithm based on SVD decomposition.
 
 To learn more about the available correction strategies and see practical examples, please refer to the [documentation](https://biaslab.github.io/MatrixCorrectionTools.jl/stable/).
+
+
+# License
+
+[MIT License](LICENSE) Copyright (c) 2023 BIASlab
