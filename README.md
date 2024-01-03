@@ -17,4 +17,4 @@ To learn more about the available correction strategies and see practical exampl
 
 # License
 
-[MIT License](LICENSE) Copyright (c) 2023 BIASlab
+[MIT License](LICENSE) Copyright (c) 2023-2024 BIASlab
